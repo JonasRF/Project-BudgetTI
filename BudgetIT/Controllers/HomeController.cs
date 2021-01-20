@@ -17,9 +17,11 @@ namespace BudgetIT.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            ViewData["Message"] = "Qualidade em compressores e dispensers";
+            ViewData["email"] = "atendimentorj@aspro.com.br";
+            ViewData["contato"] = "(21)2107-1101";
+            ViewData["developer"] = "Jonas Ribeiro";
+                return View();
         }
 
         public IActionResult Contact()
