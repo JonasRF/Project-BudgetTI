@@ -1,0 +1,48 @@
+﻿@model BudgetIT.Models.NotaFiscalProduto
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>NotaFiscalProduto</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Emissao)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Emissao)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Vencimento)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Vencimento)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NrNota)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NrNota)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Oc)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Oc)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
