@@ -9,7 +9,7 @@ namespace BudgetIT.Models
     {
         public int Id { get; set; }
         public DateTime Emissao { get; set; }
-        public double Vencimento { get; set; }
+        public DateTime Vencimento { get; set; }
         public string NrNota { get; set; }
         public double Valor { get; set; }
         public string Oc { get; set; }
@@ -18,7 +18,7 @@ namespace BudgetIT.Models
         {
         }
 
-        public NotaFiscalProduto(int id, DateTime emissao, double vencimento, string nrNota, double valor, string oc)
+        public NotaFiscalProduto(int id, DateTime emissao, DateTime vencimento, string nrNota, double valor, string oc)
         {
             Id = id;
             Emissao = emissao;
