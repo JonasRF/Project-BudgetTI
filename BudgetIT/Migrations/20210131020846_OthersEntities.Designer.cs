@@ -4,14 +4,16 @@ using BudgetIT.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BudgetIT.Migrations
 {
     [DbContext(typeof(BudgetITContext))]
-    partial class BudgetITContextModelSnapshot : ModelSnapshot
+    [Migration("20210131020846_OthersEntities")]
+    partial class OthersEntities
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,7 +68,9 @@ namespace BudgetIT.Migrations
 
                     b.Property<int>("ClienteId");
 
-                    b.Property<int>("FornecedorId");
+                    b.Property<int>("FornecdorId");
+
+                    b.Property<int?>("FornecedorId");
 
                     b.HasKey("Id");
 
@@ -218,8 +222,7 @@ namespace BudgetIT.Migrations
 
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
                         .WithMany("ClienteFornecedor")
-                        .HasForeignKey("FornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FornecedorId");
                 });
 
             modelBuilder.Entity("BudgetIT.Models.Fornecedor", b =>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace BudgetIT.Models
 {
-    public class NotaFiscalProduto
+    public class NotaFiscalServico
     {
         public int Id { get; set; }
         public DateTime Emissao { get; set; }
@@ -15,11 +15,11 @@ namespace BudgetIT.Models
         public Fornecedor Fornecedor { get; set; }
         public NotaStatus Status { get; set; }
 
-        public NotaFiscalProduto()
+        public NotaFiscalServico()
         {
         }
 
-        public NotaFiscalProduto(int id, DateTime emissao, DateTime vencimento, string nrNota, double valor, string oc, Fornecedor fornecedor, NotaStatus status)
+        public NotaFiscalServico(int id, DateTime emissao, DateTime vencimento, string nrNota, double valor, string oc, Fornecedor fornecedor, NotaStatus status)
         {
             Id = id;
             Emissao = emissao;
