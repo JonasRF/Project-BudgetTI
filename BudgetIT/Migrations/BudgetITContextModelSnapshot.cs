@@ -33,8 +33,6 @@ namespace BudgetIT.Migrations
 
                     b.Property<string>("Filial");
 
-                    b.Property<int?>("FornecedorId");
-
                     b.Property<string>("InscEstatudal");
 
                     b.Property<string>("InscMunicipal");
@@ -52,8 +50,6 @@ namespace BudgetIT.Migrations
                         .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
 
                     b.HasKey("Id");
-
-                    b.HasIndex("FornecedorId");
 
                     b.ToTable("Cliente");
                 });
@@ -99,17 +95,11 @@ namespace BudgetIT.Migrations
 
                     b.Property<string>("RazaoSocial");
 
-                    b.Property<int?>("ServicoId");
+                    b.Property<string>("Telefone");
 
-                    b.Property<string>("UF")
-                        .IsRequired()
-                        .HasConversion(new ValueConverter<string, string>(v => default(string), v => default(string), new ConverterMappingHints(size: 1)));
-
-                    b.Property<string>("telefone");
+                    b.Property<string>("UF");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ServicoId");
 
                     b.ToTable("Fornecedor");
                 });
@@ -202,42 +192,28 @@ namespace BudgetIT.Migrations
                     b.ToTable("Servico");
                 });
 
-            modelBuilder.Entity("BudgetIT.Models.Cliente", b =>
-                {
-                    b.HasOne("BudgetIT.Models.Fornecedor")
-                        .WithMany("client")
-                        .HasForeignKey("FornecedorId");
-                });
-
             modelBuilder.Entity("BudgetIT.Models.ClienteFornecedor", b =>
                 {
                     b.HasOne("BudgetIT.Models.Cliente", "Cliente")
-                        .WithMany("ClienteFornecedor")
+                        .WithMany()
                         .HasForeignKey("ClienteId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
-                        .WithMany("ClienteFornecedor")
+                        .WithMany()
                         .HasForeignKey("FornecedorId")
                         .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("BudgetIT.Models.Fornecedor", b =>
-                {
-                    b.HasOne("BudgetIT.Models.Servico")
-                        .WithMany("Fornecedores")
-                        .HasForeignKey("ServicoId");
                 });
 
             modelBuilder.Entity("BudgetIT.Models.FornecedorServico", b =>
                 {
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
-                        .WithMany("FornecedorServico")
+                        .WithMany()
                         .HasForeignKey("FornecedorId")
                         .OnDelete(DeleteBehavior.Cascade);
 
                     b.HasOne("BudgetIT.Models.Servico", "Servico")
-                        .WithMany("FornecedorServico")
+                        .WithMany()
                         .HasForeignKey("ServicoId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });

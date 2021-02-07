@@ -18,7 +18,6 @@ namespace BudgetIT.Models
         public string Telefone { get; set; }
         public char UF { get; set; }
         public string Filial { get; set; }
-        public ICollection<ClienteFornecedor> ClienteFornecedor { get; set; }
        
         public Cliente()
         {

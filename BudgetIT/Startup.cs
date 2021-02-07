@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using BudgetIT.Models;
+using BudgetIT.Data;
 
 namespace BudgetIT
 {
@@ -38,14 +39,17 @@ namespace BudgetIT
 
             services.AddDbContext<BudgetITContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("BudgetITContext"), builder => builder.MigrationsAssembly("BudgetIT")));
+
+            services.AddScoped<SeedingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, SeedingService seedingService)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                seedingService.Seed();
             }
             else
             {

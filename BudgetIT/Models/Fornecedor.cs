@@ -15,21 +15,17 @@ namespace BudgetIT.Models
         public string CEP { get; set; }
         public string Logradouro { get; set; }
         public string Municipio { get; set; }
-        public string telefone { get; set; }
-        public char UF { get; set; }
+        public string Telefone { get; set; }
+        public string UF { get; set; }
         public ICollection<NotaFiscalProduto> provider1 { get; set; } = new List<NotaFiscalProduto>();
         public ICollection<NotaFiscalServico> provider2 { get; set; } = new List<NotaFiscalServico>();
-        public ICollection<Cliente> client { get; set; } = new List<Cliente>();
-        public ICollection<ClienteFornecedor> ClienteFornecedor { get; set; }
-        public ICollection<FornecedorServico> FornecedorServico { get; set; } 
-
+       
         public Fornecedor()
         {
         }
 
-        public Fornecedor(int id, string razaoSocial, string nomeFantasia, string inscEstatudal, string inscMunicipal, string cNPJ, string cEP, string logradouro, string municipio, string telefone, char uF)
+        public Fornecedor(string razaoSocial, string nomeFantasia, string inscEstatudal, string inscMunicipal, string cNPJ, string cEP, string logradouro, string municipio, string telefone, string uF)
         {
-            Id = id;
             RazaoSocial = razaoSocial;
             NomeFantasia = nomeFantasia;
             InscEstatudal = inscEstatudal;
@@ -38,7 +34,7 @@ namespace BudgetIT.Models
             CEP = cEP;
             Logradouro = logradouro;
             Municipio = municipio;
-            this.telefone = telefone;
+            Telefone = telefone;
             UF = uF;
         }
 
@@ -60,11 +56,6 @@ namespace BudgetIT.Models
         public void RemoveNfServico(NotaFiscalServico nf)
         {
             provider2.Remove(nf);
-        }
-
-        public void AddCliente(Cliente cl)
-        {
-            client.Add(cl);
         }
 
         public double TotalProduct(DateTime inicial, DateTime final)

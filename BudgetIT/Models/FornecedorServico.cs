@@ -10,9 +10,9 @@ namespace BudgetIT.Models
         public int Id { get; set; }
         public int FornecedorId { get; set; }
         public int ServicoId { get; set; }
-        public virtual Fornecedor Fornecedor { get; set; }
-        public virtual Servico Servico { get; set; }
-
+        public  Fornecedor Fornecedor { get; set; }
+        public  Servico Servico { get; set; }
+       
         public FornecedorServico()
         {
         }
