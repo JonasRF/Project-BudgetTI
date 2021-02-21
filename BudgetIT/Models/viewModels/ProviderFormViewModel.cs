@@ -8,6 +8,7 @@ namespace BudgetIT.Models.viewModels
     public class ProviderFormViewModel
     {
         public Fornecedor Fornecedor { get; set; }
+        public NotaFiscalProduto NotaFiscalProduto { get; set; }
         public ICollection<Fornecedor> Fornec { get; set; } = new List<Fornecedor>();
 
         public void AddProvider(Fornecedor fd)

@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using BudgetIT.Models;
 using BudgetIT.Data;
+using BudgetIT.Services;
 
 namespace BudgetIT
 {
@@ -41,6 +42,7 @@ namespace BudgetIT
                     options.UseSqlServer(Configuration.GetConnectionString("BudgetITContext"), builder => builder.MigrationsAssembly("BudgetIT")));
 
             services.AddScoped<SeedingService>();
+            services.AddScoped<FornecedorService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
