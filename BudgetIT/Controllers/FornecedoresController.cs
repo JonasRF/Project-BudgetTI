@@ -74,6 +74,7 @@ namespace BudgetIT.Controllers
             return View(obj);
         }
 
+        //Metodo post da função Edit da class Fornecedor
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Edit(int id, Fornecedor fornecedor)
@@ -97,6 +98,20 @@ namespace BudgetIT.Controllers
             }
         }
 
+        public IActionResult Details(int? id)
+        {
+            if(id == null)
+            {
+                return NotFound();
+            }
+
+            var obj = _Fornecedorservice.FindById(id.Value);
+            if(obj == null)
+            {
+                return BadRequest();
+            }
+            return View(obj);
+        }
 
     }
 }
