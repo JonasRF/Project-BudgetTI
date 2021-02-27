@@ -1,0 +1,24 @@
+﻿@model IEnumerable<BudgetIT.Models.Servico> 
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create new</a>
+</p>
+
+<table class="table table-striped table-responsive table-hover">
+    <thead>
+       <tr>
+           <th>
+               @Html.DisplayNameFor(obj => obj.Descricao)
+           </th>
+           <th>
+               @Html.DisplayNameFor(obj => obj.Tipo)
+           </th>
+       </tr>
+    </thead>
+</table> 
+

@@ -14,9 +14,8 @@ namespace BudgetIT.Models
         {
         }
 
-        public Servico(int id, string descricao, string tipo)
+        public Servico(string descricao, string tipo)
         {
-            Id = id;
             Descricao = descricao;
             Tipo = tipo;
         }

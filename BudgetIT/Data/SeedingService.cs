@@ -26,10 +26,14 @@ namespace BudgetIT.Data
 
             Fornecedor f1 = new Fornecedor("Auvo Tecnologia LTDA", "Auvo", "12345678", "3354678893", "123.456.78/0002-76", "34321-87", "Rua fulano de tal", "Rio de janeiro", "56123-5678", "RJ");
             Fornecedor f2 = new Fornecedor("Santo Digital LTDA", "Santo Digital", "12345678", "3354678893", "123.456.78/0002-76", "34321-87", "Rua fulano de tal", "Rio de janeiro", "56123-5678", "RJ");
+           
 
             _context.Fornecedor.AddRange(f1, f2);
 
+
             _context.SaveChanges();
+
+
         }
     }
 }
