@@ -1,5 +1,6 @@
 ﻿@model BudgetIT.Models.NotaFiscalProduto
 
+
 @{
     ViewData["Title"] = "Create";
 }
@@ -37,16 +38,21 @@
                 <input asp-for="Oc" class="form-control" />
                 <span asp-validation-for="Oc" class="text-danger"></span>
             </div>
-       
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-default" />
-                </div>
-</form>
-    </div>
-</div>
 
-<div>
-    <a asp-action="Index" class="btn btn-primary">Back to List</a>
+            <div class="form-group">
+                <p class="text-left">Selecione o Status</p>
+                <select class="form-control" input asp-for="Notas" asp-items="Html.GetEnumSelectList<Nota>()"></select>
+                <span asp-validation-for="Notas" class="text-danger"></span>
+            </div>
+            <br />
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-info" />
+                <a asp-action="Index" class="btn btn-info">Back to List</a>
+            </div>
+
+        </form>
+    </div>
 </div>
 
 @section Scripts {

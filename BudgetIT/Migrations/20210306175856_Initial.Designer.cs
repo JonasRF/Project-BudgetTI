@@ -4,14 +4,16 @@ using BudgetIT.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BudgetIT.Migrations
 {
     [DbContext(typeof(BudgetITContext))]
-    partial class BudgetITContextModelSnapshot : ModelSnapshot
+    [Migration("20210306175856_Initial")]
+    partial class Initial
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -131,7 +133,7 @@ namespace BudgetIT.Migrations
 
                     b.Property<DateTime>("Emissao");
 
-                    b.Property<int>("FornecedorId");
+                    b.Property<int?>("FornecedorId");
 
                     b.Property<int>("Notas");
 
@@ -158,7 +160,7 @@ namespace BudgetIT.Migrations
 
                     b.Property<DateTime>("Emissao");
 
-                    b.Property<int>("FornecedorId");
+                    b.Property<int?>("FornecedorId");
 
                     b.Property<int>("Notas");
 
@@ -222,16 +224,14 @@ namespace BudgetIT.Migrations
                 {
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
                         .WithMany("provider1")
-                        .HasForeignKey("FornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FornecedorId");
                 });
 
             modelBuilder.Entity("BudgetIT.Models.NotaFiscalServico", b =>
                 {
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
                         .WithMany("provider2")
-                        .HasForeignKey("FornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("FornecedorId");
                 });
 #pragma warning restore 612, 618
         }

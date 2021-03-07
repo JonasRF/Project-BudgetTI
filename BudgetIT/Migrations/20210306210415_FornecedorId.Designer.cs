@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BudgetIT.Migrations
 {
     [DbContext(typeof(BudgetITContext))]
-    [Migration("20210207015424_update04")]
-    partial class update04
+    [Migration("20210306210415_FornecedorId")]
+    partial class FornecedorId
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -133,13 +133,13 @@ namespace BudgetIT.Migrations
 
                     b.Property<DateTime>("Emissao");
 
-                    b.Property<int?>("FornecedorId");
+                    b.Property<int>("FornecedorId");
+
+                    b.Property<int>("Notas");
 
                     b.Property<string>("NrNota");
 
                     b.Property<string>("Oc");
-
-                    b.Property<int>("Status");
 
                     b.Property<double>("Valor");
 
@@ -160,13 +160,13 @@ namespace BudgetIT.Migrations
 
                     b.Property<DateTime>("Emissao");
 
-                    b.Property<int?>("FornecedorId");
+                    b.Property<int>("FornecedorId");
+
+                    b.Property<int>("Notas");
 
                     b.Property<string>("NrNota");
 
                     b.Property<string>("Oc");
-
-                    b.Property<int>("Status");
 
                     b.Property<double>("Valor");
 
@@ -224,14 +224,16 @@ namespace BudgetIT.Migrations
                 {
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
                         .WithMany("provider1")
-                        .HasForeignKey("FornecedorId");
+                        .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("BudgetIT.Models.NotaFiscalServico", b =>
                 {
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
                         .WithMany("provider2")
-                        .HasForeignKey("FornecedorId");
+                        .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

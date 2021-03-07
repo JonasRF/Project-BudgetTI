@@ -1,8 +1,11 @@
 ﻿@model IEnumerable<BudgetIT.Models.NotaFiscalProduto>
 
+<
 @{
     ViewData["Title"] = "Index";
 }
+
+<body style="background: #CED8F6">
 
 <h2>Index</h2>
 
@@ -28,12 +31,13 @@
                 @Html.DisplayNameFor(model => model.Oc)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Status)
+                @Html.DisplayNameFor(model => model.Notas)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
+    " >
 @foreach (var item in Model) {
         <tr>
             <td>
@@ -52,8 +56,9 @@
                 @Html.DisplayFor(modelItem => item.Oc)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Status)
+                @Html.DisplayFor(modelItem => item.Notas)
             </td>
+            
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
                 <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
@@ -63,3 +68,4 @@
 }
     </tbody>
 </table>
+    </body>

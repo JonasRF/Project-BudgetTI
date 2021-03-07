@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BudgetIT.Migrations
 {
-    public partial class update04 : Migration
+    public partial class Initial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -105,7 +105,7 @@ namespace BudgetIT.Migrations
                     Valor = table.Column<double>(nullable: false),
                     Oc = table.Column<string>(nullable: true),
                     FornecedorId = table.Column<int>(nullable: true),
-                    Status = table.Column<int>(nullable: false)
+                    Notas = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -130,7 +130,7 @@ namespace BudgetIT.Migrations
                     Valor = table.Column<double>(nullable: false),
                     Oc = table.Column<string>(nullable: true),
                     FornecedorId = table.Column<int>(nullable: true),
-                    Status = table.Column<int>(nullable: false)
+                    Notas = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

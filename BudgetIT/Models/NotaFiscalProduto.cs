@@ -1,6 +1,5 @@
-﻿using BudgetIT.Models.Enums;
+﻿using BudgetIT.Models;
 using System;
-using System.Collections.Generic;
 
 namespace BudgetIT.Models
 {
@@ -13,13 +12,14 @@ namespace BudgetIT.Models
         public double Valor { get; set; }
         public string Oc { get; set; }
         public Fornecedor Fornecedor { get; set; }
-        public NotaStatus Status { get; set; }
+        public int FornecedorId { get; set; }
+        public Nota Notas { get; set; }
 
         public NotaFiscalProduto()
         {
         }
 
-        public NotaFiscalProduto(int id, DateTime emissao, DateTime vencimento, string nrNota, double valor, string oc, Fornecedor fornecedor, NotaStatus status)
+        public NotaFiscalProduto(int id, DateTime emissao, DateTime vencimento, string nrNota, double valor, string oc, Fornecedor fornecedor, Nota notas)
         {
             Id = id;
             Emissao = emissao;
@@ -28,7 +28,7 @@ namespace BudgetIT.Models
             Valor = valor;
             Oc = oc;
             Fornecedor = fornecedor;
-            Status = status;
+            Notas = notas;
         }
     }
 }

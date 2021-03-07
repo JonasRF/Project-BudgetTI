@@ -53,10 +53,11 @@ namespace BudgetIT.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,Emissao,Vencimento,NrNota,Valor,Oc")] NotaFiscalProduto notaFiscalProduto)
+        public async Task<IActionResult> Create([Bind("Id,Emissao,Vencimento,NrNota,Valor,Oc, Notas")] NotaFiscalProduto notaFiscalProduto)
         {
             if (ModelState.IsValid)
             {
+                notaFiscalProduto.Fornecedor = _context.Fornecedor.First();
                 _context.Add(notaFiscalProduto);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

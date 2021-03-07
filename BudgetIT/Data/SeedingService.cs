@@ -30,6 +30,9 @@ namespace BudgetIT.Data
 
             _context.Fornecedor.AddRange(f1, f2);
 
+            Servico s1 = new Servico("Monitoramento de tecnicos aos postos", "Monitoramento");
+
+            _context.Servico.AddRange(s1);
 
             _context.SaveChanges();
 
