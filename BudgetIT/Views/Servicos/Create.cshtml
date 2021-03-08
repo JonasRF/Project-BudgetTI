@@ -1,0 +1,30 @@
+﻿@model BudgetIT.Models.Servico
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Services</h4>
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+           <div class="form-group">
+            <label asp-for="Descricao" class="control-label"></label>
+            <input asp-for="Descricao" class="form-control" />
+               </div>
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <input asp-for="Tipo" class="form-control" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-success" />
+                <a asp-action="Index" class="btn btn-info">Back to list</a>
+            </div>
+</form>
+    </div>
+</div>
+
