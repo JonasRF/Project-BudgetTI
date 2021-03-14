@@ -1,4 +1,4 @@
-﻿@model BudgetIT.Models.NotaFiscalProduto
+﻿@model BudgetIT.Models.viewModels.NotaFiscalProdutoViewModel
 
 @{
     ViewData["Title"] = "Delete";
@@ -12,40 +12,52 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Emissao)
+            @Html.DisplayNameFor(model => model.NotaFiscalProduto.Emissao)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Emissao)
+            @Html.DisplayFor(model => model.NotaFiscalProduto.Emissao)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Vencimento)
+            @Html.DisplayNameFor(model => model.NotaFiscalProduto.Vencimento)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Vencimento)
+            @Html.DisplayFor(model => model.NotaFiscalProduto.Vencimento)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.NrNota)
+            @Html.DisplayNameFor(model => model.NotaFiscalProduto.NrNota)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.NrNota)
+            @Html.DisplayFor(model => model.NotaFiscalProduto.NrNota)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Valor)
+            @Html.DisplayNameFor(model => model.NotaFiscalProduto.Valor)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Valor)
+            @Html.DisplayFor(model => model.NotaFiscalProduto.Valor)
         </dd>
         <dt>
-            @Html.DisplayNameFor(model => model.Oc)
+            @Html.DisplayNameFor(model => model.NotaFiscalProduto.Oc)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Oc)
+            @Html.DisplayFor(model => model.NotaFiscalProduto.Oc)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NotaFiscalProduto.Notas)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NotaFiscalProduto.Notas)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.NotaFiscalProduto.Fornecedor.RazaoSocial)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.NotaFiscalProduto.Fornecedor.RazaoSocial)
         </dd>
     </dl>
     
     <form asp-action="Delete">
-        <input type="hidden" asp-for="Id" />
-        <input type="submit" value="Delete" class="btn btn-default" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="hidden" asp-for="NotaFiscalProduto.Id" />
+        <input type="submit" value="Delete" class="btn btn-success" /> |
+        <a asp-action="Index" class="btn btn-info">Back to List</a>
     </form>
 </div>

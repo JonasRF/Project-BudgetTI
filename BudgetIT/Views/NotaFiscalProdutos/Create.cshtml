@@ -1,4 +1,4 @@
-﻿@model BudgetIT.Models.NotaFiscalProduto
+﻿@model BudgetIT.Models.viewModels.NotaFiscalProdutoViewModel
 
 
 @{
@@ -14,40 +14,43 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Emissao" class="control-label"></label>
-                <input asp-for="Emissao" class="form-control" />
-                <span asp-validation-for="Emissao" class="text-danger"></span>
+                <label asp-for="NotaFiscalProduto.Emissao" class="control-label"></label>
+                <input asp-for="NotaFiscalProduto.Emissao" class="form-control" />
+                <span asp-validation-for="NotaFiscalProduto.Emissao" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Vencimento" class="control-label"></label>
-                <input asp-for="Vencimento" class="form-control" />
-                <span asp-validation-for="Vencimento" class="text-danger"></span>
+                <label asp-for="NotaFiscalProduto.Vencimento" class="control-label"></label>
+                <input asp-for="NotaFiscalProduto.Vencimento" class="form-control" />
+                <span asp-validation-for="NotaFiscalProduto.Vencimento" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="NrNota" class="control-label"></label>
-                <input asp-for="NrNota" class="form-control" />
-                <span asp-validation-for="NrNota" class="text-danger"></span>
+                <label asp-for="NotaFiscalProduto.NrNota" class="control-label"></label>
+                <input asp-for="NotaFiscalProduto.NrNota" class="form-control" />
+                <span asp-validation-for="NotaFiscalProduto.NrNota" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Valor" class="control-label"></label>
-                <input asp-for="Valor" class="form-control" />
-                <span asp-validation-for="Valor" class="text-danger"></span>
+                <label asp-for="NotaFiscalProduto.Valor" class="control-label"></label>
+                <input asp-for="NotaFiscalProduto.Valor" class="form-control" />
+                <span asp-validation-for="NotaFiscalProduto.Valor" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Oc" class="control-label"></label>
-                <input asp-for="Oc" class="form-control" />
-                <span asp-validation-for="Oc" class="text-danger"></span>
+                <label asp-for="NotaFiscalProduto.Oc" class="control-label"></label>
+                <input asp-for="NotaFiscalProduto.Oc" class="form-control" />
+                <span asp-validation-for="NotaFiscalProduto.Oc" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <p class="text-left">Selecione o Status</p>
-                <select class="form-control" input asp-for="Notas" asp-items="Html.GetEnumSelectList<Nota>()"></select>
-                <span asp-validation-for="Notas" class="text-danger"></span>
+                <label asp-for="NotaFiscalProduto.FornecedorId" class="control-label"></label>
+                <select asp-for="NotaFiscalProduto.FornecedorId" asp-items="@(new SelectList(Model.Fornecedor,"Id", "RazaoSocial"))" class="form-control"></select> 
+            </div>
+            <div class="form-group">
+                <label asp-for="NotaFiscalProduto.Notas" class="control-label"></label>
+                <select asp-for="NotaFiscalProduto.Notas" asp-items="Html.GetEnumSelectList<Nota>()" class="form-control"></select>
+                <span asp-validation-for="NotaFiscalProduto.Notas" class="text-danger"></span>
             </div>
             <br />
 
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-info" />
+                <input type="submit" value="Create" class="btn btn-success" />
                 <a asp-action="Index" class="btn btn-info">Back to List</a>
             </div>
 
