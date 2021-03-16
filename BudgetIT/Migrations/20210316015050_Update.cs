@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BudgetIT.Migrations
 {
-    public partial class Initial : Migration
+    public partial class Update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -54,20 +54,6 @@ namespace BudgetIT.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Servico",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Descricao = table.Column<string>(nullable: true),
-                    Tipo = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Servico", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "ClienteFornecedor",
                 columns: table => new
                 {
@@ -104,8 +90,8 @@ namespace BudgetIT.Migrations
                     NrNota = table.Column<string>(nullable: true),
                     Valor = table.Column<double>(nullable: false),
                     Oc = table.Column<string>(nullable: true),
-                    FornecedorId = table.Column<int>(nullable: true),
-                    Notas = table.Column<int>(nullable: false)
+                    FornecedorId = table.Column<int>(nullable: false),
+                    Status = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -115,7 +101,7 @@ namespace BudgetIT.Migrations
                         column: x => x.FornecedorId,
                         principalTable: "Fornecedor",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -129,7 +115,7 @@ namespace BudgetIT.Migrations
                     NrNota = table.Column<string>(nullable: true),
                     Valor = table.Column<double>(nullable: false),
                     Oc = table.Column<string>(nullable: true),
-                    FornecedorId = table.Column<int>(nullable: true),
+                    FornecedorId = table.Column<int>(nullable: false),
                     Notas = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -140,31 +126,26 @@ namespace BudgetIT.Migrations
                         column: x => x.FornecedorId,
                         principalTable: "Fornecedor",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "FornecedorServico",
+                name: "Servico",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    FornecedorId = table.Column<int>(nullable: false),
-                    ServicoId = table.Column<int>(nullable: false)
+                    Descricao = table.Column<string>(nullable: true),
+                    Tipo = table.Column<string>(nullable: true),
+                    FornecedorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_FornecedorServico", x => x.Id);
+                    table.PrimaryKey("PK_Servico", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_FornecedorServico_Fornecedor_FornecedorId",
+                        name: "FK_Servico_Fornecedor_FornecedorId",
                         column: x => x.FornecedorId,
                         principalTable: "Fornecedor",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_FornecedorServico_Servico_ServicoId",
-                        column: x => x.ServicoId,
-                        principalTable: "Servico",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -180,16 +161,6 @@ namespace BudgetIT.Migrations
                 column: "FornecedorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_FornecedorServico_FornecedorId",
-                table: "FornecedorServico",
-                column: "FornecedorId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_FornecedorServico_ServicoId",
-                table: "FornecedorServico",
-                column: "ServicoId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_NotaFiscalProduto_FornecedorId",
                 table: "NotaFiscalProduto",
                 column: "FornecedorId");
@@ -197,6 +168,11 @@ namespace BudgetIT.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_NotaFiscalServico_FornecedorId",
                 table: "NotaFiscalServico",
+                column: "FornecedorId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Servico_FornecedorId",
+                table: "Servico",
                 column: "FornecedorId");
         }
 
@@ -206,19 +182,16 @@ namespace BudgetIT.Migrations
                 name: "ClienteFornecedor");
 
             migrationBuilder.DropTable(
-                name: "FornecedorServico");
-
-            migrationBuilder.DropTable(
                 name: "NotaFiscalProduto");
 
             migrationBuilder.DropTable(
                 name: "NotaFiscalServico");
 
             migrationBuilder.DropTable(
-                name: "Cliente");
+                name: "Servico");
 
             migrationBuilder.DropTable(
-                name: "Servico");
+                name: "Cliente");
 
             migrationBuilder.DropTable(
                 name: "Fornecedor");

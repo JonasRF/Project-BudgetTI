@@ -19,7 +19,7 @@ namespace BudgetIT.Data
         public void Seed()
         {
             if (_context.Fornecedor.Any() || _context.NotaFiscalProduto.Any() || _context.NotaFiscalServico.Any() ||
-                _context.Cliente.Any() || _context.ClienteFornecedor.Any() || _context.FornecedorServico.Any() || _context.Servico.Any())
+                _context.Cliente.Any() || _context.ClienteFornecedor.Any() || _context.Servico.Any())
             {
                 return;
             }
@@ -30,7 +30,7 @@ namespace BudgetIT.Data
 
             _context.Fornecedor.AddRange(f1, f2);
 
-            Servico s1 = new Servico("Monitoramento de tecnicos aos postos", "Monitoramento");
+            Servico s1 = new Servico("Monitoramento de tecnicos aos postos", "Monitoramento", f1);
 
             _context.Servico.AddRange(s1);
 

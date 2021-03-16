@@ -13,13 +13,13 @@ namespace BudgetIT.Models
         public string Oc { get; set; }
         public Fornecedor Fornecedor { get; set; }
         public int FornecedorId { get; set; }
-        public Nota Notas { get; set; }
+        public Nota Status { get; set; }
 
         public NotaFiscalProduto()
         {
         }
 
-        public NotaFiscalProduto(int id, DateTime emissao, DateTime vencimento, string nrNota, double valor, string oc, Fornecedor fornecedor, Nota notas)
+        public NotaFiscalProduto(int id, DateTime emissao, DateTime vencimento, string nrNota, double valor, string oc, Fornecedor fornecedor, Nota status)
         {
             Id = id;
             Emissao = emissao;
@@ -28,7 +28,7 @@ namespace BudgetIT.Models
             Valor = valor;
             Oc = oc;
             Fornecedor = fornecedor;
-            Notas = notas;
+            Status = status;
         }
     }
 }

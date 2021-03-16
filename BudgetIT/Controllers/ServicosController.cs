@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using BudgetIT.Models;
+using BudgetIT.Models.viewModels;
 using BudgetIT.Services;
 using BudgetIT.Services.Exception;
 using Microsoft.AspNetCore.Mvc;
@@ -12,10 +13,12 @@ namespace BudgetIT.Controllers
     public class ServicosController : Controller
     {
         private readonly ServicoService _ServicoService;
+        private readonly FornecedorService _FornecedorService;
 
-        public ServicosController(ServicoService ServicoService)
+        public ServicosController(ServicoService ServicoService, FornecedorService FornecedorService)
         {
             _ServicoService = ServicoService;
+            _FornecedorService = FornecedorService;
         }
 
         public IActionResult Index()
@@ -27,7 +30,9 @@ namespace BudgetIT.Controllers
         //Metodo Get Serviço 
         public IActionResult Create()
         {
-            return View();
+            var fornecedores = _FornecedorService.FindAll();
+            var viewModel = new ServicoViewModel { Fornecedor = fornecedores };
+            return View(viewModel);
         }
 
         //Metodo post Servico

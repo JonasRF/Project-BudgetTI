@@ -18,7 +18,6 @@ namespace BudgetIT.Models
         public DbSet<Fornecedor> Fornecedor { get; set; }
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Servico> Servico { get; set; }
-        public DbSet<FornecedorServico> FornecedorServico { get; set; }
         public DbSet<ClienteFornecedor> ClienteFornecedor { get; set; }
     }
 }

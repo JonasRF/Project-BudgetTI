@@ -104,25 +104,6 @@ namespace BudgetIT.Migrations
                     b.ToTable("Fornecedor");
                 });
 
-            modelBuilder.Entity("BudgetIT.Models.FornecedorServico", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("FornecedorId");
-
-                    b.Property<int>("ServicoId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("FornecedorId");
-
-                    b.HasIndex("ServicoId");
-
-                    b.ToTable("FornecedorServico");
-                });
-
             modelBuilder.Entity("BudgetIT.Models.NotaFiscalProduto", b =>
                 {
                     b.Property<int>("Id")
@@ -133,11 +114,11 @@ namespace BudgetIT.Migrations
 
                     b.Property<int>("FornecedorId");
 
-                    b.Property<int>("Notas");
-
                     b.Property<string>("NrNota");
 
                     b.Property<string>("Oc");
+
+                    b.Property<int>("Status");
 
                     b.Property<double>("Valor");
 
@@ -185,9 +166,13 @@ namespace BudgetIT.Migrations
 
                     b.Property<string>("Descricao");
 
+                    b.Property<int>("FornecedorId");
+
                     b.Property<string>("Tipo");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("FornecedorId");
 
                     b.ToTable("Servico");
                 });
@@ -205,19 +190,6 @@ namespace BudgetIT.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("BudgetIT.Models.FornecedorServico", b =>
-                {
-                    b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
-                        .WithMany()
-                        .HasForeignKey("FornecedorId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("BudgetIT.Models.Servico", "Servico")
-                        .WithMany()
-                        .HasForeignKey("ServicoId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("BudgetIT.Models.NotaFiscalProduto", b =>
                 {
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
@@ -230,6 +202,14 @@ namespace BudgetIT.Migrations
                 {
                     b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
                         .WithMany("provider2")
+                        .HasForeignKey("FornecedorId")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("BudgetIT.Models.Servico", b =>
+                {
+                    b.HasOne("BudgetIT.Models.Fornecedor", "Fornecedor")
+                        .WithMany()
                         .HasForeignKey("FornecedorId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
