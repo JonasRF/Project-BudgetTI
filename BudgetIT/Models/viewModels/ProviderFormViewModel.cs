@@ -11,7 +11,6 @@ namespace BudgetIT.Models.viewModels
         public Servico Servico { get; set; }
         public NotaFiscalProduto NotaFiscalProduto { get; set; }
         public ICollection<Fornecedor> Fornec { get; set; } = new List<Fornecedor>();
-        public ICollection<Servico> Serv { get; set; } = new List<Servico>();
 
         public void AddProvider(Fornecedor fd)
         {
@@ -21,11 +20,6 @@ namespace BudgetIT.Models.viewModels
         public void RemoveProvider(Fornecedor fd)
         {
             Fornec.Remove(fd);
-        }
-
-        public void AddService(Servico sv)
-        {
-            Serv.Add(sv);
         }
 
         public double TotalBillingProduct(DateTime initial, DateTime final)

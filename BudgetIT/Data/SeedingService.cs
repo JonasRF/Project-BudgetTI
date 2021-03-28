@@ -31,8 +31,9 @@ namespace BudgetIT.Data
             _context.Fornecedor.AddRange(f1, f2);
 
             Servico s1 = new Servico("Monitoramento de tecnicos aos postos", "Monitoramento", f1);
+            Servico s2 = new Servico("Domínio de e-mails", "E-mail", f2);
 
-            _context.Servico.AddRange(s1);
+            _context.Servico.AddRange(s1, s2);
 
             _context.SaveChanges();
 

@@ -17,6 +17,7 @@ namespace BudgetIT.Models
         public string Municipio { get; set; }
         public string Telefone { get; set; }
         public string UF { get; set; }
+        public ICollection<Servico> Serv { get; set; } = new List<Servico>();
         public ICollection<NotaFiscalProduto> provider1 { get; set; } = new List<NotaFiscalProduto>();
         public ICollection<NotaFiscalServico> provider2 { get; set; } = new List<NotaFiscalServico>();
        
@@ -56,6 +57,16 @@ namespace BudgetIT.Models
         public void RemoveNfServico(NotaFiscalServico nf)
         {
             provider2.Remove(nf);
+        }
+
+        public void AddService(Servico sv)
+        {
+            Serv.Add(sv);
+        }
+
+        public void RemoveService(Servico sv)
+        {
+            Serv.Remove(sv);
         }
 
         public double TotalProduct(DateTime inicial, DateTime final)
