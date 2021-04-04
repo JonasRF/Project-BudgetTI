@@ -19,5 +19,11 @@ namespace BudgetIT.Services
         {
             return _context.NotaFiscalServico.ToList();
         }
+
+        public void Insert(NotaFiscalServico obj)
+        {
+            _context.NotaFiscalServico.Add(obj);
+            _context.SaveChanges();
+        }
     }
 }
