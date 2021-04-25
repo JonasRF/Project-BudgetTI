@@ -8,6 +8,10 @@ namespace BudgetIT.Models
 {
     public class BudgetITContext : DbContext
     {
+        public BudgetITContext()
+        {
+        }
+
         public BudgetITContext (DbContextOptions<BudgetITContext> options)
             : base(options)
         {
@@ -19,5 +23,7 @@ namespace BudgetIT.Models
         public DbSet<Cliente> Cliente { get; set; }
         public DbSet<Servico> Servico { get; set; }
         public DbSet<ClienteFornecedor> ClienteFornecedor { get; set; }
+        public DbSet<BudgetRecord> BudgetRecord { get; set; }
+
     }
 }

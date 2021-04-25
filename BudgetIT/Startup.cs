@@ -46,6 +46,7 @@ namespace BudgetIT
             services.AddScoped<ServicoService>();
             services.AddScoped<NotaFiscalProdutoService>();
             services.AddScoped<NotaFiscalServicoService>();
+            services.AddScoped<BudgetRecordService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
